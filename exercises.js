@@ -22,8 +22,9 @@ function greeting(language) {
       return 'Hello!';
     case 'Spanish':
       return 'Hola!';
+    default:
+      return 'Hello!';
   }
-  return 'Hello';
 }
 
 function isTenOrFive(num) {
@@ -54,17 +55,20 @@ function fizzBuzz(num) {
   // otherwise return num
   var str = '';
   var flag = false;
-  switch(num) {
-    case num%3 === 0:
-      flag = true;
-      str += 'fizz';
-    case num%5 === 0:
-      flag = true;
-      str += 'buzz';
+  if(num%3 === 0) {
+    str += 'fizz';
+    flag = true;
   }
+
+  if(num%5 === 0) {
+    str += 'buzz';
+    flag = true;
+  }
+
   if(flag) {
     return str;
   }
+
   return num;
 }
 
@@ -74,11 +78,11 @@ function isPrime(num) {
   // hint: a prime number is only evenly divisible by itself and 1
   // hint2: you can solve this using a for loop
   // note: 0 and 1 are NOT considered prime numbers
-  if(num === 0 || num === i) {
+  if(num === 0 || num === 1) {
     return false;
   }
-  for(var i=0; i<num/2; i++) {
-    if(num/i === 0) {
+  for(var i=2; i<=num-1; i++) {
+    if(num%i === 0) {
       return false;
     }
   }
@@ -104,7 +108,7 @@ function incrementByOne(arr) {
   // arr is an array of integers  
   // increase each integer by one
   // return the array
-  for(var i-0; i<arr.length; i++) {
+  for(var i=0; i<arr.length; i++) {
     arr[i] += 1;
   }
   return arr;
@@ -145,25 +149,26 @@ function contains(arr, item) {
   // return true if it is, otherwise return false
   var flag = false;
   arr.forEach(function(element) {
-    flag = true;
-  });
+    if(element === item) {
+      flag = true;
+  }});
   return flag;
 }
 
 function addNumbers(numbers) {
   // numbers is an array of integers.
   // add all of the integers and return the value
-  var total;
+  var total = 0;
   numbers.forEach(function(element) {
     total += element;
   });
-  return element;
+  return total;
 }
 
 function averageTestScore(testScores) {
   // testScores is an array.  Iterate over testScores and compute the average.
   // return the average
-  var total;
+  var total = 0;
   var count = 0;
   testScores.forEach(function(element) {
     total += element;
